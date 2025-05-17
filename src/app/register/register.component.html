@@ -1,0 +1,176 @@
+<form #registrationForm="ngForm" (ngSubmit)="onSubmit(registrationForm)" class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+
+      <div *ngIf="successMessage" class="alert alert-success">
+        {{ successMessage }}
+      </div>
+
+      <div *ngIf="errorMessage" class="alert alert-danger">
+        {{ errorMessage }}
+      </div>
+
+      <h3>Formulaire d'inscription Ambassadeur</h3>
+      <hr>
+
+      <div class="form-group">
+        <label for="firstName">Prénom <span class="required-field">*</span></label>
+        <input id="firstName" name="firstName" class="form-control"
+               [(ngModel)]="user.firstName" #firstName="ngModel"
+               pattern="^[a-zA-ZÀ-ÿ\s\-']*$" required />
+        <small *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="text-danger">
+          <span *ngIf="firstName.errors?.['required']">Le prénom est requis</span>
+          <span *ngIf="firstName.errors?.['pattern']">Caractères non autorisés</span>
+        </small>
+        <small class="form-text text-muted">Seules les lettres, espaces, traits d'union et apostrophes sont autorisés</small>
+      </div>
+
+      <div class="form-group">
+        <label for="lastName">Nom <span class="required-field">*</span></label>
+        <input id="lastName" name="lastName" class="form-control"
+               [(ngModel)]="user.lastName" #lastName="ngModel"
+               pattern="^[a-zA-ZÀ-ÿ\s\-']*$" required />
+        <small *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="text-danger">
+          <span *ngIf="lastName.errors?.['required']">Le nom est requis</span>
+          <span *ngIf="lastName.errors?.['pattern']">Caractères non autorisés</span>
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email <span class="required-field">*</span></label>
+        <input id="email" name="email" type="email" class="form-control"
+               [(ngModel)]="user.email" #email="ngModel" required />
+        <small *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
+          <span *ngIf="email.errors?.['required']">L'email est requis</span>
+          <span *ngIf="email.errors?.['email']">Format d'email invalide</span>
+        </small>
+        <small class="form-text text-muted">ex: ambassadeur&#64;example.com</small>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Mot de passe <span class="required-field">*</span></label>
+        <input id="password" name="password" type="password" class="form-control"
+               [(ngModel)]="user.password" #password="ngModel"
+               pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$" required />
+        <small *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
+          <span *ngIf="password.errors?.['required']">Le mot de passe est requis</span>
+          <span *ngIf="password.errors?.['pattern']">Le mot de passe ne respecte pas les exigences</span>
+        </small>
+        <small class="form-text text-muted">
+          Exigences : 8+ caractères, 1 majuscule, 1 minuscule, 1 chiffre, 1 caractère spécial (&#64;#$%^&+=)
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="confirmPassword">Confirmer le mot de passe <span class="required-field">*</span></label>
+        <input id="confirmPassword" name="confirmPassword" type="password" class="form-control"
+               [(ngModel)]="user.confirmPassword" #confirmPassword="ngModel" required />
+        <small *ngIf="user.password && user.confirmPassword && user.password !== user.confirmPassword" class="text-danger">
+          Les mots de passe ne correspondent pas
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Numéro de téléphone <span class="required-field">*</span></label>
+        <div class="input-group">
+          <select class="form-control" [(ngModel)]="phonePrefix" name="phonePrefix" style="max-width: 120px;">
+            <option value="+216">+216 (Tunisie)</option>
+            <option value="+974">+974 (Qatar)</option>
+          </select>
+          <input id="phone" name="phone" type="tel" class="form-control"
+                 [(ngModel)]="user.phone" #phone="ngModel"
+                 pattern="^\\d{8}$" required />
+        </div>
+        <small *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="text-danger">
+          <span *ngIf="phone.errors?.['required']">Le numéro de téléphone est requis</span>
+          <span *ngIf="phone.errors?.['pattern']">Format de téléphone invalide</span>
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="cin">CIN <span class="required-field">*</span></label>
+        <input id="cin" name="cin" type="text" class="form-control"
+               [(ngModel)]="user.cin" #cin="ngModel"
+               pattern="^\\d{8}$" required />
+        <small *ngIf="cin.invalid && (cin.dirty || cin.touched)" class="text-danger">
+          <span *ngIf="cin.errors?.['required']">Le CIN est requis</span>
+          <span *ngIf="cin.errors?.['pattern']">Le CIN doit contenir exactement 8 chiffres</span>
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="birthDate">Date de naissance <span class="required-field">*</span></label>
+        <input id="birthDate" name="birthDate" type="date" class="form-control"
+               [(ngModel)]="user.birthDate" #birthDate="ngModel"
+               [max]="today" required />
+        <small *ngIf="birthDate.invalid && (birthDate.dirty || birthDate.touched)" class="text-danger">
+          La date de naissance est requise
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="country">Pays <span class="required-field">*</span></label>
+        <select id="country" name="country" class="form-control"
+                [(ngModel)]="user.country" #country="ngModel" required>
+          <option value="">-- Sélectionnez un pays --</option>
+          <option value="Tunisie">Tunisie</option>
+          <option value="Katar">Katar</option>
+        </select>
+        <small *ngIf="country.invalid && (country.dirty || country.touched)" class="text-danger">
+          Le pays est requis
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="gouvernorat">Gouvernorat <span class="required-field">*</span></label>
+        <select id="gouvernorat" name="gouvernorat" class="form-control"
+                [(ngModel)]="user.gouvernorat" #gouvernorat="ngModel" required>
+          <option value="">-- Sélectionnez un gouvernorat --</option>
+          <option *ngFor="let gov of gouvernorats" [value]="gov">{{ gov }}</option>
+        </select>
+        <small *ngIf="gouvernorat.invalid && (gouvernorat.dirty || gouvernorat.touched)" class="text-danger">
+          Le gouvernorat est requis
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="typeAmbassadeur">Type d'Ambassadeur <span class="required-field">*</span></label>
+        <select id="typeAmbassadeur" name="typeAmbassadeur" class="form-control"
+                [(ngModel)]="user.typeAmbassadeur" #typeAmbassadeur="ngModel"
+                (change)="toggleAssociationField()" required>
+          <option value="">-- Sélectionnez un type --</option>
+          <option value="INDIVIDUEL">Ambassadeur Individuel</option>
+          <option value="ASSOCIATION">Représentant d'Association</option>
+        </select>
+        <small *ngIf="typeAmbassadeur.invalid && (typeAmbassadeur.dirty || typeAmbassadeur.touched)" class="text-danger">
+          Le type d'ambassadeur est requis
+        </small>
+      </div>
+
+      <div class="form-group" *ngIf="user.typeAmbassadeur === 'ASSOCIATION'">
+        <label for="association">Nom de l'Association <span class="required-field">*</span></label>
+        <input id="association" name="association" class="form-control"
+               [(ngModel)]="user.association" #association="ngModel"
+               required />
+        <small *ngIf="association.invalid && (association.dirty || association.touched)" class="text-danger">
+          Le nom de l'association est requis
+        </small>
+      </div>
+
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary"
+                [disabled]="!registrationForm.form.valid || user.password !== user.confirmPassword || isLoading">
+          <ng-container *ngIf="isLoading; else notLoading">
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Enregistrement...
+          </ng-container>
+          <ng-template #notLoading>
+            Soumettre la demande
+          </ng-template>
+        </button>
+
+        <button type="button" class="btn btn-default" (click)="cancel()">Annuler</button>
+      </div>
+    </div>
+  </div>
+</form>

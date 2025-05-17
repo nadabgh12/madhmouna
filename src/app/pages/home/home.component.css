@@ -1,0 +1,51 @@
+
+body { font-family: Arial, sans-serif; margin: 0; padding: 0;}
+header { background: #c4f2d6; color: rgb(17, 17, 17); text-align: center; padding: 5px; }
+main { padding: 20px; text-align: center; }
+button {
+  margin: 10px;
+  padding: 12px 24px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.ambassadeur-btn { background-color: #0077cc; color: white; }
+.particulier-btn { background-color: #0d8f7f; color: white; }
+.features { display: none; margin-top: 20px; text-align: left; max-width: 600px; margin-left: auto; margin-right: auto; background: #ffffff; padding: 20px; border-radius: 10px; }
+ul { line-height: 1.8; }
+/* Style spécifique au footer */
+.ahmini-footer {
+    background-color: #f5f5f5;
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid #ddd;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  .ahmini-footer p {
+    margin: 0.5px 0;
+    color: #666;
+    font-size: 0.5em;
+  }
+  .hero-img {
+
+    width: 40%;
+    margin-left: 480px;
+    height: 500px; /* Obligatoire pour les backgrounds */
+    border-radius: 10px; 
+    
+    margin-bottom: 10px;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+    
+   
+  }
+
+
+
+  
+  

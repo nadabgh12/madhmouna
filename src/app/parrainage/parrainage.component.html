@@ -1,0 +1,19 @@
+<div class="container">
+    <h1>Liste des femmes à parrainer</h1>
+    <div class="femmes-list">
+      <div class="femme" *ngFor="let femme of femmes">
+        <p>Nom : {{ femme.nom }}</p>
+        <p>Âge : {{ femme.age }} ans</p>
+        <p>Gouvernorat : {{ femme.gouvernorat }}</p>
+        <p>Montant à payer : <strong>{{ femme.montant }} DT</strong></p>
+        <button (click)="parrainer(femme)">Parrainer</button>
+      </div>
+    </div>
+  
+    <div class="modal" *ngIf="showModal">
+      <p>Voulez-vous vraiment parrainer {{ selectedFemme.nom }} pour {{ selectedFemme.montant }} DT ?</p>
+      <button (click)="payer()">✅ Payer</button>
+      <button (click)="fermer()">❌ Annuler</button>
+    </div>
+  </div>
+  

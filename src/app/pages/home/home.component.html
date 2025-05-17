@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Accueil - AHMINI</title>
+ 
+</head>
+<body>
+
+<header>
+  <h1>Bienvenue sur AHMINI</h1>
+  <p>La plateforme d’assurance sociale pour les femmes rurales</p>
+</header>
+<img src="assets/acc3.png" alt="Femme" class="hero-img">
+<main>
+  <p>Choisissez votre profil pour découvrir les services disponibles :</p>
+  <a routerLink="/ambassador">
+    <button>Je suis ambassadeur</button>
+  </a>
+  
+  <a routerLink="/particulier">
+    <button> Je suis Particulier</button>
+  </a>
+  
+
+
+ <!-- Ajout d'un élément pour afficher le rôle sélectionné -->
+ <h2 id="selectedRoleDisplay"></h2>
+  <div id="ambassadeur" class="features">
+    <h2>Fonctionnalités pour Ambassadeur</h2>
+    <ul>
+      <li>✔️ Accès à MADHMOUNA</li>
+      <li>✔️ Faire une demande d’adhésion pour une femme</li>
+      <li>✔️ Déclarer un sinistre</li>
+      <li>✔️ Parrainage (spécifique ou aléatoire)</li>
+      <li>✔️ Paiement en ligne</li>
+    </ul>
+  </div>
+
+  <div id="particulier" class="features">
+    <h2>Fonctionnalités pour Particulier</h2>
+    <ul>
+      <li>✔️ Faire une demande d’inscription à la plateforme</li>
+      <li>✔️ Parrainer une femme (spécifique ou aléatoire)</li>
+      <li>✔️ Paiement en ligne</li>
+    </ul>
+  </div>
+</main>
+
+<footer class="ahmini-footer">
+  <p>© 2025 AHMINI. Tous droits réservés.</p>
+  <p>📞 +216 22 000 000 | ✉️ contact.tn</p>
+</footer>
+
+<script>
+  function showFeatures(role) {
+    document.getElementById('ambassadeur').style.display = 'none';
+    document.getElementById('particulier').style.display = 'none';
+    document.getElementById(role).style.display = 'block';
+  }
+</script>
+
+</body>
+</html>

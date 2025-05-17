@@ -1,0 +1,92 @@
+ body {
+            margin: 0;
+            padding: 100;
+            font-family: Arial, sans-serif;
+            background-color: #e13333;
+        }
+        
+        .container {
+              border: 1px solid rgb(0, 0, 0); /* ✅ Bordure noire nette */
+    /*width: 100%;*/
+    max-width: 350px;
+    margin: 80px auto;
+    padding: 40px;
+    border-radius: 12px;
+    background-color: #f9f9f9;
+    border: 2px solid rgb(1, 74, 18); /* ✅ Bordure noire nette */
+    text-align: center;
+    font-family: 'Segoe UI', sans-serif;
+        box-sizing: border-box;
+
+        
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+             margin-right: -4400px;
+    margin-left: -603px;
+    transform: translate(-20px);
+        }
+        
+        .user-info {
+            display: flex;
+            margin-right: 20px;
+            align-items: center;
+        }
+        
+        .user-icon {
+            width: 40px;
+            height: 40px;
+            margin-right: 20px;
+            margin-left: 600px;
+        }
+        
+        .greeting {
+            font-size: 15px;
+            font-weight: bold;
+        }
+        
+        .settings-btn {
+            background: none;
+            border: none;
+            font-size: 20px;
+            padding: 10px;
+            margin-right: 550px;
+        }
+        
+        .welcome {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .hero-img {
+            max-width: 70px;
+            margin-bottom: 25px;
+        }
+        
+        .welcome p {
+            font-size: 16px;
+            margin-bottom: 25px;
+        }
+        
+        .login-btn {
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto 15px;
+            padding: 15px;
+            font-size: 16px;
+            border-radius: 10px;
+            border: none;
+            background-color: #c5f8dd;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+        
+        .login-btn:active {
+            background-color: #b83131;
+        }
+    

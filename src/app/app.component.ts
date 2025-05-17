@@ -1,12 +1,29 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { SplashScreenComponent } from './splash-screen/splash-screen.component';
+import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  standalone: true,
+  imports: [SplashScreenComponent, RouterOutlet, CommonModule],
+  template: `
+   <app-splash-screen *ngIf="showSplashScreen"></app-splash-screen>
+<router-outlet *ngIf="!showSplashScreen"></router-outlet>
+
+  `
 })
 export class AppComponent {
-  title = 'madhmouna-frontend';
+  login(login: any) {
+    throw new Error('Method not implemented.');
+  }
+  showSplashScreen = true;
+
+  constructor(private router: Router) {
+    setTimeout(() => {
+      this.showSplashScreen = false;
+      this.router.navigate(['/home']);
+    }, 3000);
+  }
 }

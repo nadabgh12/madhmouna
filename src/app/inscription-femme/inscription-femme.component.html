@@ -1,0 +1,17 @@
+<div class="container">
+    <h2>🧕 Formulaire d'inscription d'une femme rurale</h2>
+    <form (ngSubmit)="envoyer()">
+      <input [(ngModel)]="femme.nom" name="nom" placeholder="Nom" required>
+      <input [(ngModel)]="femme.prenom" name="prenom" placeholder="Prénom" required>
+      <input [(ngModel)]="femme.dateNaissance" name="dateNaissance" type="date" placeholder="Date de naissance" required>
+      <input [(ngModel)]="femme.gouvernorat" name="gouvernorat" placeholder="Gouvernorat" required>
+      <input [(ngModel)]="femme.cin" name="cin" placeholder="CIN" required>
+      <input [(ngModel)]="femme.nbrEnfants" name="nbrEnfants" type="number" placeholder="Nombre d'enfants" required>
+      <input [(ngModel)]="femme.activite" name="activite" placeholder="Activité" required>
+
+      <label>Télécharger la CIN :</label>
+      <input type="file" (change)="onFileSelected($event)" accept="image/*,application/pdf">
+
+      <button type="submit">✅ Envoyer</button>
+    </form>
+  </div>

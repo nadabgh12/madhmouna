@@ -1,0 +1,30 @@
+
+    <div class="container">
+      <h2>👩‍🌾 Femmes inscrites</h2>
+      <table *ngIf="femmes.length > 0">
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Date de naissance</th>
+            <th>Gouvernorat</th>
+            <th>CIN</th>
+            <th>Enfants</th>
+            <th>Activité</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let f of femmes">
+            <td>{{ f.nom }}</td>
+            <td>{{ f.prenom }}</td>
+            <td>{{ f.dateNaissance }}</td>
+            <td>{{ f.gouvernorat }}</td>
+            <td>{{ f.cin }}</td>
+            <td>{{ f.nbrEnfants }}</td>
+            <td>{{ f.activite }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <p *ngIf="femmes.length === 0">Aucune femme inscrite pour le moment.</p>
+    </div>
+ 

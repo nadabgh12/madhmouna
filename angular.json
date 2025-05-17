@@ -21,13 +21,15 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
+              "src/assets",
+              "src/favicon.ico"
+              
             ],
             "styles": [
-              "src/styles.css"
+  "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+  "src/styles.css"
+
+
             ],
             "scripts": [],
             "server": "src/main.server.ts",
@@ -67,6 +69,7 @@
               "buildTarget": "madhmouna-frontend:build:production"
             },
             "development": {
+              
               "buildTarget": "madhmouna-frontend:build:development"
             }
           },
@@ -84,12 +87,18 @@
             ],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
+               "src/assets",
+              "src/favicon.ico"
+              
             ],
             "styles": [
+              "node_modules/ngx-toastr/toastr.css",
+
+              
+  "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+  
+
+
               "src/styles.css"
             ],
             "scripts": []

@@ -1,6 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 
+
+
+
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -17,7 +20,7 @@ describe('AppComponent', () => {
   it(`should have the 'madhmouna-frontend' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('madhmouna-frontend');
+    expect(app.login).toEqual('madhmouna-frontend');
   });
 
   it('should render title', () => {

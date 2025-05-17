@@ -1,0 +1,178 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0px;
+    padding:0px;
+        border-radius: 12px;
+
+
+}
+
+.container {
+    border: 1px solid rgb(0, 0, 0); /* ✅ Bordure noire nette */
+    /*width: 100%;*/
+    max-width: 350px;
+    margin: 80px auto;
+    padding: 40px;
+    border-radius: 12px;
+    background-color: #f9f9f9;
+    border: 2px solid rgb(1, 74, 18); /* ✅ Bordure noire nette */
+    text-align: center;
+    font-family: 'Segoe UI', sans-serif;
+        box-sizing: border-box;
+
+
+
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 30px 0px;
+    padding-left: 1px;
+    padding-top: 10px;
+    box-shadow: 0 3px 5px rgba(155, 9, 9, 0.1);
+    margin-right: -40px;
+    margin-left: -35px;
+
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.greeting {
+    font-weight: bold;
+    box-decoration-break: clone;
+}
+
+.country {
+    margin-left: 10px;
+    color: gray;
+}
+
+.settings-btn {
+    margin-left: 80px;
+    background: none;
+    border: rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+}
+
+.welcome {
+    padding: 20px;
+    text-align: center;
+    background-color: #fffbf0;
+    border-radius: 8px;
+    margin: 20px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      margin-right: -40px;
+    margin-left: -35px;
+
+}
+
+.login-btn {
+    background-color: rgba(11, 156, 134, 0.864);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+   
+}
+.nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .nav li {
+    position: relative;
+    margin: 10px 0;
+  }
+  
+  .nav button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .has-submenu:hover .submenu {
+    display: block;
+  }
+  
+  .submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    min-width: 180px;
+    z-index: 10;
+    padding: 8px 0;
+  }
+  
+  .submenu li {
+    padding: 8px 16px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  
+  .submenu li:hover {
+    background-color: #f2f2f2;
+  }
+  footer {
+    position: fixed; /* fixe le footer en bas */
+    bottom: 0; /* positionné à 0px du bas */
+    width: 100%;
+    background-color: #f8f9fa; /* couleur de fond douce */
+    padding: 20px 0;
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1); /* ombre vers le haut */
+    z-index: 1000; /* pour qu’il soit au-dessus si nécessaire */
+  }
+  
+  .footer-nav {
+    display: flex;
+    justify-content: center;
+    gap: 40px; /* espacement entre les éléments */
+    font-size: 16px;
+    font-weight: 500; /* corrigé : 50% n'est pas une valeur valide */
+    color: #333;
+  }
+  
+  .footer-nav span {
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-nav span:hover {
+    color: #21ad62; /* couleur au survol */
+  }
+  
+  .hero-img {
+    width: 30px;              /* Largeur du logo */
+    height: 30px;             /* Hauteur du logo */
+    margin: 0 auto;          /* Centré horizontalement */
+    display: block;          /* Assure que l'élément est un bloc */
+    border-radius: 10%;      /* Cercle parfait */
+    background-size: cover;  /* Couvre entièrement la zone */
+    background-position: center; /* Centre l'image dans le cercle */
+    margin-bottom: 0px;      /* Espacement sous l'image */
+  }
+  
