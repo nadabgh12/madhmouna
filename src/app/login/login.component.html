@@ -2,10 +2,10 @@
     <div class="logo">
       <img src="assets/12.png" alt="Logo Assure" />
     </div>
-  
+
     <h2 class="title">Bienvenue</h2>
-  
-    <form [formGroup]="loginForm">
+
+    <!--<form [formGroup]="loginForm">
             <input
         type="email"
         placeholder="Adresse Email"
@@ -13,7 +13,7 @@
         name="email"
         required
       />
-  
+
       <input
       formControlName="password"
         type="password"
@@ -21,14 +21,43 @@
         name="password"
         required
       />
-  
+
       <button (click)="login()">Se connecter</button>
-    </form>
-    
-    <a routerLink="/register" class="switch-link">Pas encore inscrit ? Créer un compte</a>
+    </form>-->
+
+  <!--Two way binding -->
+<!--  <form (ngSubmit)="onLogin()">
+    <input type="text" [(ngModel)]="username" name="username" placeholder="Adresse Email" required />
+    <input type="password" [(ngModel)]="password" name="password" placeholder="Mot de passe" required />
+    <button type="submit">Se connecter</button>
+    <p *ngIf="error" style="color: red">{{ error }}</p>
+  </form>-->
+
+  <!--Reactive form -->
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <input type="text" formControlName="username" placeholder="Adresse Email" />
+    <div *ngIf="submitted && loginForm.get('username')?.errors">
+      <p *ngIf="loginForm.get('username')?.errors?.['required']"
+         style="color: red;font-size:small">
+        L'adresse email est requise.
+      </p>
+      <p *ngIf="loginForm.get('username')?.errors?.['email']"
+         style="color: red;font-size:small">
+        Format d'adresse email invalide.
+      </p>
+    </div>
+    <input type="password" formControlName="password"  placeholder="Mot de passe"/>
+    <p *ngIf="submitted && loginForm.get('password')?.invalid"
+       style="color: red;font-size:small">
+      Le password est requis.
+    </p>
+    <button type="submit">Se connecter</button>
+    <p *ngIf="errorMsg" style="color: red;font-size:small">{{ errorMsg }}</p>
+  </form>
+
+  <a routerLink="/register" class="switch-link">Pas encore inscrit ? Créer un compte</a>
 
 
-    
+
     <a routerLink="/forgot-password" class="switch-link">Mot de passe oublié ?</a>
   </div>
-  

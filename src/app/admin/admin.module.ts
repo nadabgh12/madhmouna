@@ -9,10 +9,13 @@ import { InscriptionManuelleComponent } from './inscription-manuelle/inscription
 import { ParrainageComponent } from './parrainage/parrainage.component';
 import { RapportsComponent } from './rapports/rapports.component';
 import { ValidationComptesComponent } from './validation-comptes/validation-comptes.component';
+import {BrowserModule} from '@angular/platform-browser';
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 // Importez tous les autres composants...
 
 const routes: Routes = [
-  { 
+  {
     path: '',
     component: DashboardComponent,
     children: [
@@ -30,7 +33,11 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(routes),
+    BrowserModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule],
   exports: [RouterModule]
 })
 export class AdminRoutingModule { }
