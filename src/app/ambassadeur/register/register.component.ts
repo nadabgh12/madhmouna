@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm, FormsModule } from '@angular/forms';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { RouterModule, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { CommonModule } from '@angular/common';
@@ -17,6 +17,7 @@ import { CommonModule } from '@angular/common';
   ],
 })
 export class RegisterComponent implements OnInit {
+
   errorMessage: any;
   successMessage: any;
   user: any = {

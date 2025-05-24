@@ -1,0 +1,223 @@
+/* ================ */
+/* VARIABLES & BASE  */
+/* ================ */
+:root {
+  --primary-color: #0056b3;
+  --secondary-color: #003366;
+  --accent-color: #ff7e00;
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+  --light-color: #f8f9fa;
+  --dark-color: #343a40;
+  --border-color: #c6c4c4;
+  --text-color: #1e1f1e;
+  --muted-color: #898b8c;
+}
+
+/* ================ */
+/* LAYOUT & CONTAINERS */
+/* ================ */
+.container {
+  padding: 2rem;
+}
+
+.panel {
+background: linear-gradient(to bottom,#d2f6ee, #fefcf3,#fefcf3,#a7e8d4,#55cba8,#87f1d2);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(61, 223, 164, 0.1);
+  margin: 0 auto;
+  max-width: 600px;
+  overflow: hidden;
+}
+
+.panel-heading {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  color: rgb(12, 12, 12);
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.panel-body {
+  padding: 2rem;
+}
+
+/* ================ */
+/* TYPOGRAPHY & TITRES */
+/* ================ */
+h3 {
+  color: var(--secondary-color);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+h4 {
+  color: var(--primary-color);
+  font-size: 1.2rem;
+  font-weight: 60;
+  margin: 1rem 0 1rem;
+  position: relative;
+  
+}
+
+h4:after {
+  background: linear-gradient(90deg, var(--primary-color) 0%, #00b3a1 100%);
+  bottom: 0;
+  content: '';
+  height: 30px;
+  left: 0;
+  position: absolute;
+  width: 50px;
+}
+
+/* ================ */
+/* FORMULAIRE */
+/* ================ */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  color: var(--secondary-color);
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.required-field {
+  color: var(--danger-color);
+}
+
+.form-control {
+  background-color: rgb(247, 241, 241);
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  color: var(--text-color);
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  width: 100%;
+}
+
+.form-control:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem rgba(47, 220, 157, 0.25);
+  outline: none;
+}
+
+/* ================ */
+/* GROUPES DE CHAMPS */
+/* ================ */
+.input-group {
+  display: flex;
+}
+
+.input-group select {
+  border-right: none;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.input-group .form-control {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+/* ================ */
+/* BOUTONS */
+/* ================ */
+.btn {
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-right: 1rem;
+  padding: 0.75rem 1.5rem;
+  transition: all 0.3s;
+}
+
+.btn-primary {
+  background-color: rgb(139, 239, 187);
+  color: rgb(10, 10, 10);
+}
+
+.btn-primary:hover {
+  background-color: rgb(139, 239, 187);
+  box-shadow: 0 4px 8px rgba(5, 235, 78, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: #8befbb;
+  border: 1px solid #bcbbbb;
+  color: var(--dark-color);
+}
+
+.btn-secondary:hover {
+  background-color: #1ef56d;
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+/* ================ */
+/* MESSAGES & ALERTES */
+/* ================ */
+.alert {
+  border-radius: 5px;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+}
+
+.alert-success {
+  background-color: rgba(40, 167, 69, 0.1);
+  border: 1px solid var(--success-color);
+  color: var(--success-color);
+}
+
+.alert-danger {
+  background-color: rgba(220, 53, 69, 0.1);
+  border: 1px solid var(--danger-color);
+  color: var(--danger-color);
+}
+
+.invalid-feedback {
+  color: var(--danger-color);
+  display: block;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+.text-muted {
+  color: var(--muted-color) !important;
+  font-size: 0.85rem;
+}
+
+/* ================ */
+/* RESPONSIVE */
+/* ================ */
+@media (max-width: 768px) {
+  .panel-body {
+    padding: 1.5rem;
+  }
+  
+  .input-group {
+    flex-direction: column;
+  }
+  
+  .input-group select {
+    border-radius: 5px;
+    border-right: 1px solid var(--border-color);
+    margin-bottom: 0.5rem;
+  }
+  
+  .input-group .form-control {
+    border-radius: 5px;
+  }
+  
+  .btn {
+    margin-bottom: 1rem;
+    margin-right: 0;
+    width: 100%;
+  }
+}

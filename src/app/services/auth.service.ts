@@ -10,7 +10,7 @@ import { Authenticationrequest } from '../models/authenticationrequest';
 export class AuthService {
 
  // private apiUrl = 'http://localhost:8080/api/v1/auth';
-   private apiUrl = 'http://localhost:8080/api/auth/register';
+private apiUrl = 'http://localhost:8080/api/registration';
 
   resetPassword: any;
   forgotPassword: any;
@@ -18,7 +18,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 registerAmbassadeur(ambassadeur :Ambassadeur ): Observable<Response> {
-    return this.http.post<Response>(`${this.apiUrl}/registerambassadeur`, ambassadeur);
+    return this.http.post<Response>(`${this.apiUrl}/ambassadeur`, ambassadeur);
   }
   login(authenticationrequest:Authenticationrequest): Observable<AuthenticatorResponse> {
     return this.http.post<AuthenticatorResponse>(`${this.apiUrl}/authenticate`,authenticationrequest);

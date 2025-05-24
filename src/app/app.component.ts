@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { SplashScreenComponent } from './splash-screen/splash-screen.component';
+import { SplashScreenComponent } from './pages/home/splash-screen/splash-screen.component';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 

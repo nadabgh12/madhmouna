@@ -1,0 +1,27 @@
+<div class="p-6 max-w-4xl mx-auto">
+  <h2 class="text-3xl font-bold mb-6">🎯 Espace MADHMOUNA</h2>
+
+  <div class="card p-4 shadow-md rounded-xl bg-white mb-6">
+    <div *ngIf="user">
+      <p><strong>Nom :</strong> {{ user.firstName }} {{ user.lastName }}</p>
+      <p><strong>Email :</strong> {{ user.email }}</p>
+      <p><strong>Statut :</strong> {{ user.status }}</p>
+      <p><strong>Type :</strong> {{ user.userType }}</p>
+      <p *ngIf="user.typeAmbassadeur"><strong>Type Ambassadeur :</strong> {{ user.typeAmbassadeur }}</p>
+      <p *ngIf="user.association"><strong>Association :</strong> {{ user.association }}</p>
+      <p *ngIf="user.gouvernorat"><strong>Gouvernorat :</strong> {{ user.gouvernorat }}</p>
+      <p *ngIf="user.codeParrainage"><strong>Code Parrainage :</strong> {{ user.codeParrainage }}</p>
+    </div>
+  </div>
+
+  <p class="mb-6 text-lg">Bienvenue, <strong>Ambassadeur Validé</strong> ! Voici les services disponibles :</p>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <a routerLink="/ambassadeur/adhesion" class="shortcut-card">📝 Demande d’adhésion</a>
+    <a routerLink="/ambassadeur/sinistre" class="shortcut-card">🚨 Déclaration de sinistre</a>
+    <a routerLink="/ambassadeur/parrainage" class="shortcut-card">🎁 Parrainage</a>
+    <a routerLink="/ambassadeur/paiement" class="shortcut-card">💳 Paiement en ligne</a>
+    <a routerLink="/ambassadeur/profil" class="shortcut-card">👤 Mon Profil</a>
+    <a routerLink="/logout" class="shortcut-card">🚪 Déconnexion</a>
+  </div>
+</div>

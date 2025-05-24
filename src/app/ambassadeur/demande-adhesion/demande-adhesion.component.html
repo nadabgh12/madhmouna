@@ -1,0 +1,161 @@
+<div class="p-4 max-w-3xl mx-auto bg-white rounded shadow">
+  <h2 class="text-3xl font-bold mb-6">📝 Formulaire de demande d’adhésion</h2>
+
+  <form [formGroup]="adhesionForm" (ngSubmit)="onSubmit()">
+
+    <!-- 1. Informations personnelles -->
+    <section class="mb-6">
+      <h3 class="text-xl font-semibold mb-3">1. Informations personnelles</h3>
+
+      <label>Nom complet *</label>
+      <input formControlName="nomComplet" class="input" type="text" />
+      
+      <label>Date de naissance *</label>
+      <input formControlName="dateNaissance" type="date" class="input" />
+
+      <label>Lieu de naissance *</label>
+      <input formControlName="lieuNaissance" type="text" class="input" />
+
+      <label>Adresse complète (village, commune, gouvernorat, code postal) *</label>
+      <textarea formControlName="adresseComplete" rows="2" class="input"></textarea>
+
+      <label>Numéro de téléphone *</label>
+      <input formControlName="telephone" type="tel" class="input" placeholder="+21612345678" />
+
+      <label>Adresse e-mail (si disponible)</label>
+      <input formControlName="email" type="email" class="input" />
+
+      <label>Numéro d'identification nationale (CIN, etc.) *</label>
+      <input formControlName="cin" type="text" class="input" />
+
+      <label>Statut marital *</label>
+      <select formControlName="statutMarital" class="input">
+        <option value="">-- Sélectionner --</option>
+        <option>célibataire</option>
+        <option>mariée</option>
+        <option>veuve</option>
+        <option>divorcée</option>
+      </select>
+
+      <label>Nombre d’enfants *</label>
+      <input formControlName="nombreEnfants" type="number" min="0" class="input" />
+    </section>
+
+    <!-- 2. Situation socio-économique -->
+    <section class="mb-6">
+      <h3 class="text-xl font-semibold mb-3">2. Situation socio-économique</h3>
+
+      <label>Niveau d’éducation *</label>
+      <select formControlName="niveauEducation" class="input">
+        <option value="">-- Sélectionner --</option>
+        <option>aucune</option>
+        <option>primaire</option>
+        <option>secondaire</option>
+        <option>supérieur</option>
+      </select>
+
+      <label>Activité professionnelle principale *</label>
+      <input formControlName="activitePrincipale" type="text" class="input" />
+
+      <label>Situation d’emploi *</label>
+      <select formControlName="situationEmploi" class="input">
+        <option value="">-- Sélectionner --</option>
+        <option>salariée</option>
+        <option>indépendante</option>
+        <option>sans emploi</option>
+      </select>
+
+      <label>Revenu mensuel estimé *</label>
+      <input formControlName="revenuMensuel" type="number" min="0" class="input" />
+
+      <label>Possession d’un logement *</label>
+      <select formControlName="possessionLogement" class="input">
+        <option value="">-- Sélectionner --</option>
+        <option>propre</option>
+        <option>loué</option>
+        <option>hébergé</option>
+      </select>
+
+      <label>Possession d’actifs *</label>
+      <input formControlName="possessionActifs" type="text" class="input" placeholder="terre agricole, bétail, outils..." />
+
+      <label>Membres du foyer à charge (nombre et âge approximatif) *</label>
+      <textarea formControlName="membresFoyer" rows="2" class="input"></textarea>
+    </section>
+
+    <!-- 3. Informations sur la couverture d’assurance souhaitée -->
+    <section class="mb-6">
+      <h3 class="text-xl font-semibold mb-3">3. Couverture d’assurance souhaitée</h3>
+
+      <label>Type de produit d’assurance choisi *</label>
+      <input formControlName="typeProduit" type="text" class="input" placeholder="ex: assurance santé, décès..." />
+
+      <label>Montant de la couverture souhaitée</label>
+      <input formControlName="montantCouverture" type="number" min="0" class="input" />
+
+      <label>Fréquence de paiement de la cotisation *</label>
+      <select formControlName="frequencePaiement" class="input">
+        <option value="">-- Sélectionner --</option>
+        <option>mensuelle</option>
+        <option>trimestrielle</option>
+        <option>annuelle</option>
+      </select>
+
+      <label>Personne(s) bénéficiaire(s) en cas de sinistre *</label>
+      <textarea formControlName="beneficiaires" rows="2" class="input" placeholder="Nom, lien de parenté"></textarea>
+
+      <label>Informations sur les antécédents médicaux</label>
+      <textarea formControlName="antecedentsMedicaux" rows="2" class="input"></textarea>
+
+      <label>Déclaration sur l’absence de sinistres antérieurs *</label>
+      <select formControlName="absenceSinistres" class="input">
+        <option value="">-- Sélectionner --</option>
+        <option>oui</option>
+        <option>non</option>
+      </select>
+    </section>
+
+    <!-- 4. Documents à fournir -->
+    <section class="mb-6">
+      <h3 class="text-xl font-semibold mb-3">4. Documents à fournir</h3>
+
+      <input type="file" multiple (change)="onFilesSelected($event)" accept=".pdf,.jpg,.jpeg,.png" />
+      <p *ngIf="documents.length === 0" class="text-sm text-red-600">Veuillez sélectionner au moins un document.</p>
+
+      <ul>
+        <li *ngFor="let docCtrl of documents.controls; let i = index">
+          {{ docCtrl.value.name }} 
+          <button type="button" (click)="documents.removeAt(i)" class="text-red-600">Supprimer</button>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 5. Engagements et consentements -->
+    <section class="mb-6">
+      <h3 class="text-xl font-semibold mb-3">5. Engagements et consentements</h3>
+
+      <label>
+        <input type="checkbox" formControlName="acceptConditions" /> J’accepte les conditions générales de l’assurance *
+      </label>
+
+      <label>
+        <input type="checkbox" formControlName="consentementDonnees" /> Je consens au traitement de mes données personnelles *
+      </label>
+
+      <label>Signature et date *</label>
+      <input type="date" formControlName="signatureDate" class="input" />
+    </section>
+
+    <button type="submit" [disabled]="adhesionForm.invalid" class="btn-primary">
+      Soumettre la demande
+    </button>
+  </form>
+
+  <div *ngIf="successMessage" class="mt-4 p-3 bg-green-100 text-green-800 rounded">
+    {{ successMessage }}
+  </div>
+
+  <div *ngIf="errorMessage" class="mt-4 p-3 bg-red-100 text-red-800 rounded">
+    {{ errorMessage }}
+  </div>
+</div>

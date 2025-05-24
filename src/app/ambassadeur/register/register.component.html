@@ -1,20 +1,15 @@
-<form #registrationForm="ngForm" (ngSubmit)="onSubmit(registrationForm)" class="container">
+<form #registrationForm="ngForm" (ngSubmit)="onSubmit(registrationForm)">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
 
-      <div *ngIf="successMessage" class="alert alert-success">
-        {{ successMessage }}
-      </div>
-
-      <div *ngIf="errorMessage" class="alert alert-danger">
-        {{ errorMessage }}
-      </div>
+     
 
       <h3>Formulaire d'inscription Ambassadeur</h3>
       <hr>
 
+      <!-- Prénom -->
       <div class="form-group">
-        <label for="firstName">Prénom <span class="required-field">*</span></label>
+        <label for="firstName">Prénom <span class="required-field"></span></label>
         <input id="firstName" name="firstName" class="form-control"
                [(ngModel)]="user.firstName" #firstName="ngModel"
                pattern="^[a-zA-ZÀ-ÿ\s\-']*$" required />
@@ -25,8 +20,9 @@
         <small class="form-text text-muted">Seules les lettres, espaces, traits d'union et apostrophes sont autorisés</small>
       </div>
 
+      <!-- Nom -->
       <div class="form-group">
-        <label for="lastName">Nom <span class="required-field">*</span></label>
+        <label for="lastName">Nom <span class="required-field"></span></label>
         <input id="lastName" name="lastName" class="form-control"
                [(ngModel)]="user.lastName" #lastName="ngModel"
                pattern="^[a-zA-ZÀ-ÿ\s\-']*$" required />
@@ -36,8 +32,9 @@
         </small>
       </div>
 
+      <!-- Email -->
       <div class="form-group">
-        <label for="email">Email <span class="required-field">*</span></label>
+        <label for="email">Email <span class="required-field"></span></label>
         <input id="email" name="email" type="email" class="form-control"
                [(ngModel)]="user.email" #email="ngModel" required />
         <small *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
@@ -47,6 +44,7 @@
         <small class="form-text text-muted">ex: ambassadeur&#64;example.com</small>
       </div>
 
+      <!-- Mot de passe -->
       <div class="form-group">
         <label for="password">Mot de passe <span class="required-field">*</span></label>
         <input id="password" name="password" type="password" class="form-control"
@@ -61,15 +59,20 @@
         </small>
       </div>
 
+      <!-- Confirmation mot de passe -->
       <div class="form-group">
         <label for="confirmPassword">Confirmer le mot de passe <span class="required-field">*</span></label>
         <input id="confirmPassword" name="confirmPassword" type="password" class="form-control"
                [(ngModel)]="user.confirmPassword" #confirmPassword="ngModel" required />
+        <small *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)" class="text-danger">
+          Confirmation du mot de passe requise
+        </small>
         <small *ngIf="user.password && user.confirmPassword && user.password !== user.confirmPassword" class="text-danger">
           Les mots de passe ne correspondent pas
         </small>
       </div>
 
+      <!-- Téléphone -->
       <div class="form-group">
         <label for="phone">Numéro de téléphone <span class="required-field">*</span></label>
         <div class="input-group">
@@ -87,6 +90,7 @@
         </small>
       </div>
 
+      <!-- CIN -->
       <div class="form-group">
         <label for="cin">CIN <span class="required-field">*</span></label>
         <input id="cin" name="cin" type="text" class="form-control"
@@ -98,6 +102,7 @@
         </small>
       </div>
 
+      <!-- Date de naissance -->
       <div class="form-group">
         <label for="birthDate">Date de naissance <span class="required-field">*</span></label>
         <input id="birthDate" name="birthDate" type="date" class="form-control"
@@ -108,19 +113,21 @@
         </small>
       </div>
 
+      <!-- Pays -->
       <div class="form-group">
         <label for="country">Pays <span class="required-field">*</span></label>
         <select id="country" name="country" class="form-control"
                 [(ngModel)]="user.country" #country="ngModel" required>
           <option value="">-- Sélectionnez un pays --</option>
           <option value="Tunisie">Tunisie</option>
-          <option value="Katar">Katar</option>
+          <option value="Katar">Qatar</option>
         </select>
         <small *ngIf="country.invalid && (country.dirty || country.touched)" class="text-danger">
           Le pays est requis
         </small>
       </div>
 
+      <!-- Gouvernorat -->
       <div class="form-group">
         <label for="gouvernorat">Gouvernorat <span class="required-field">*</span></label>
         <select id="gouvernorat" name="gouvernorat" class="form-control"
@@ -133,6 +140,7 @@
         </small>
       </div>
 
+      <!-- Type d’ambassadeur -->
       <div class="form-group">
         <label for="typeAmbassadeur">Type d'Ambassadeur <span class="required-field">*</span></label>
         <select id="typeAmbassadeur" name="typeAmbassadeur" class="form-control"
@@ -147,6 +155,7 @@
         </small>
       </div>
 
+      <!-- Association (si applicable) -->
       <div class="form-group" *ngIf="user.typeAmbassadeur === 'ASSOCIATION'">
         <label for="association">Nom de l'Association <span class="required-field">*</span></label>
         <input id="association" name="association" class="form-control"
@@ -157,20 +166,9 @@
         </small>
       </div>
 
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary"
-                [disabled]="!registrationForm.form.valid || user.password !== user.confirmPassword || isLoading">
-          <ng-container *ngIf="isLoading; else notLoading">
-            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-            Enregistrement...
-          </ng-container>
-          <ng-template #notLoading>
-            Soumettre la demande
-          </ng-template>
-        </button>
+  <!-- Boutons -->
 
-        <button type="button" class="btn btn-default" (click)="cancel()">Annuler</button>
-      </div>
-    </div>
-  </div>
-</form>
+<button type="submit" class="btn btn-primary">Soumettre la demande</button>
+
+  <button type="button" class="btn btn-default" (click)="cancel()">Annuler</button>
+</div>

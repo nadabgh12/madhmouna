@@ -1,0 +1,143 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div *ngIf="successMessage" class="alert alert-success">
+        {{ successMessage }}
+      </div>
+
+      <div *ngIf="errorMessage" class="alert alert-danger">
+        {{ errorMessage }}
+      </div>
+
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">Formulaire d'inscription Parraineur</h3>
+        </div>
+        <div class="panel-body">
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <input type="hidden" formControlName="userType">
+
+            <h4>Informations personnelles</h4>
+            <hr>
+
+            <div class="form-group">
+              <label class="control-label required-field" for="firstName">Prénom</label>
+              <input id="firstName" class="form-control" formControlName="firstName"
+                     [class.is-invalid]="registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched">
+              <div *ngIf="registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched" class="invalid-feedback">
+                <div *ngIf="registerForm.get('firstName')?.errors?.['required']">Le prénom est requis</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label required-field" for="lastName">Nom</label>
+              <input id="lastName" class="form-control" formControlName="lastName"
+                     [class.is-invalid]="registerForm.get('lastName')?.invalid && registerForm.get('lastName')?.touched">
+              <div *ngIf="registerForm.get('lastName')?.invalid && registerForm.get('lastName')?.touched" class="invalid-feedback">
+                <div *ngIf="registerForm.get('lastName')?.errors?.['required']">Le nom est requis</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label required-field" for="email">Email</label>
+              <input id="email" type="email" class="form-control" formControlName="email"
+                     [class.is-invalid]="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+              <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="invalid-feedback">
+                <div *ngIf="registerForm.get('email')?.errors?.['required']">L'email est requis</div>
+                <div *ngIf="registerForm.get('email')?.errors?.['email']">Format d'email invalide</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label required-field" for="password">Mot de passe</label>
+              <input id="password" type="password" class="form-control" formControlName="password"
+                     [class.is-invalid]="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+              <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="invalid-feedback">
+                <div *ngIf="registerForm.get('password')?.errors?.['required']">Le mot de passe est requis</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label required-field" for="confirmPassword">Confirmer le mot de passe</label>
+              <input id="confirmPassword" type="password" class="form-control" formControlName="confirmPassword"
+                     [class.is-invalid]="registerForm.get('confirmPassword')?.invalid && registerForm.get('confirmPassword')?.touched || registerForm.errors?.['notSame']">
+              <div *ngIf="registerForm.get('confirmPassword')?.invalid && registerForm.get('confirmPassword')?.touched" class="invalid-feedback">
+                <div *ngIf="registerForm.get('confirmPassword')?.errors?.['required']">La confirmation est requise</div>
+              </div>
+              <div *ngIf="registerForm.errors?.['notSame']" class="invalid-feedback">
+                Les mots de passe ne correspondent pas
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label required-field" for="phone">Numéro de téléphone</label>
+              <div class="input-group">
+                <select class="form-control" [(ngModel)]="phonePrefix" [ngModelOptions]="{standalone: true}" style="max-width: 120px;">
+                  <option value="+216">+216 (Tunisie)</option>
+                  <option value="+974">+974 (Qatar)</option>
+                </select>
+                <input id="phone" type="tel" class="form-control" formControlName="phone"
+                       [class.is-invalid]="registerForm.get('phone')?.invalid && registerForm.get('phone')?.touched">
+              </div>
+              <div *ngIf="registerForm.get('phone')?.invalid && registerForm.get('phone')?.touched" class="invalid-feedback">
+                <div *ngIf="registerForm.get('phone')?.errors?.['required']">Le numéro de téléphone est requis</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label required-field" for="cin">CIN</label>
+              <input id="cin" type="text" class="form-control" formControlName="cin"
+                     [class.is-invalid]="registerForm.get('cin')?.invalid && registerForm.get('cin')?.touched">
+              <div *ngIf="registerForm.get('cin')?.invalid && registerForm.get('cin')?.touched" class="invalid-feedback">
+                <div *ngIf="registerForm.get('cin')?.errors?.['required']">Le CIN est requis</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label required-field" for="birthDate">Date de naissance</label>
+              <input id="birthDate" type="date" class="form-control" formControlName="birthDate" [max]="today"
+                     [class.is-invalid]="registerForm.get('birthDate')?.invalid && registerForm.get('birthDate')?.touched">
+              <div *ngIf="registerForm.get('birthDate')?.invalid && registerForm.get('birthDate')?.touched" class="invalid-feedback">
+                <div *ngIf="registerForm.get('birthDate')?.errors?.['required']">La date de naissance est requise</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label required-field" for="country">Pays</label>
+              <select id="country" class="form-control" formControlName="country"
+                      [class.is-invalid]="registerForm.get('country')?.invalid && registerForm.get('country')?.touched">
+                <option value="Tunisie">Tunisie</option>
+                <option value="Qatar">Qatar</option>
+              </select>
+              <div *ngIf="registerForm.get('country')?.invalid && registerForm.get('country')?.touched" class="invalid-feedback">
+                <div *ngIf="registerForm.get('country')?.errors?.['required']">Le pays est requis</div>
+              </div>
+            </div>
+
+            <h4>Informations de Parrainage</h4>
+            <hr>
+
+            <div class="form-group">
+              <label class="control-label required-field" for="gouvernorat">Gouvernorat</label>
+              <select id="gouvernorat" class="form-control" formControlName="gouvernorat"
+                      [class.is-invalid]="registerForm.get('gouvernorat')?.invalid && registerForm.get('gouvernorat')?.touched">
+                <option value="">-- Sélectionnez un gouvernorat --</option>
+                <option *ngFor="let gov of gouvernorats" [value]="gov">{{ gov }}</option>
+              </select>
+              <div *ngIf="registerForm.get('gouvernorat')?.invalid && registerForm.get('gouvernorat')?.touched" class="invalid-feedback">
+                <div *ngIf="registerForm.get('gouvernorat')?.errors?.['required']">Le gouvernorat est requis</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+         <button type="submit" class="btn btn-primary">S'inscrire</button>
+<button type="button" class="btn btn-secondary" (click)="cancel()">Annuler</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <p>Déjà inscrit ? <a routerLink="/login">Connectez-vous ici</a></p>
+    </div>
+  </div>
+</div>
