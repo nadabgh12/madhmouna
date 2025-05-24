@@ -57,3 +57,9 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+
+### TODO
+- il te manque fichier app.module.ts qui contient tous les composants.
+- Il faut organiser les composants par module et les charger en lazyloading dans les routes prinipales.
+- Il faut sécuriser les routes par guards (accès suelement avec authentification). (pas bloquant), j'ai commencé mais pas fini, je ferai mon commit quand je peux)
